@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Job Tracker Options</title>
+<style>
+body{font-family:system-ui;margin:16px;max-width:720px}
+label{display:block;margin:12px 0 6px}
+textarea,input{width:100%}
+small{color:#555}
+</style></head>
+<body>
+  <h1>Settings</h1>
+  <label>Google Apps Script Webhook URL
+    <input id="webhook" placeholder="https://script.google.com/macros/s/.../exec">
+  </label>
+  <label>Resume Variants (one per line)
+    <textarea id="resumes" rows="6" placeholder="General\nML Focused\nPM Focused"></textarea>
+    <small>These appear as a dropdown when saving a job.</small>
+  </label>
+  <button id="save">Save</button>
+  <span id="status" style="margin-left:8px;"></span>
+
+  <script src="options.js"></script>
+</body>
+</html>

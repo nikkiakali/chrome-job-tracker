@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Job Tracker Pro</title>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+  <h1>Save Job</h1>
+  <form id="job-form">
+    <label>Role Title <input id="title" required></label>
+    <label>Company <input id="company"></label>
+    <label>URL <input id="url" required></label>
+    <label>Location <input id="location"></label>
+    <label>Status
+      <select id="status">
+        <option>Applied</option><option>OA</option><option>Interview</option>
+        <option>Offer</option><option>Rejected</option>
+      </select>
+    </label>
+    <label>Applied At <input id="appliedAt" type="date"></label>
+    <label>Resume Used
+      <select id="resumeUsed"></select>
+    </label>
+    <label>Notes <textarea id="notes" rows="3"></textarea></label>
+    <button type="submit">Save</button>
+  </form>
+
+  <div class="row">
+    <button id="view-list">View Saved</button>
+    <button id="export-csv">Export CSV</button>
+    <a id="open-options" href="#" style="margin-left:auto;">Settings</a>
+  </div>
+
+  <ul id="list"></ul>
+  <script src="popup.js"></script>
+</body>
+</html>

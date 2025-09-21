@@ -1,25 +1,45 @@
-# Job Tracker Pro
+# Job Tracker Pro 🔍
 
-Job Tracker Pro is a powerful Chrome extension designed to streamline your job application process. Save, track, and manage your job applications directly from your browser with ease.
+Save, track, and manage your job applications directly from your browser.  
+This Chrome extension streamlines your job hunt with one-click saving, smart autofill, and integrations that scale from simple tracking to AI-powered workflows.
+
+- 🚀 Built with **Vanilla JavaScript + Chrome APIs**
+- 🗂 Clean, minimal UI for popups + options
+- 🔄 Supports CSV export + external integrations
+- 🤖 Webhook system enables AI enrichment (Gemini, Grok)
 
 ## Key Features
 
--   **One-Click Job Saving**: Quickly save job application details like title, company, and URL directly from your browser.
--   **Smart Auto-fill**: Automatically populates job title, company, and URL from the current page to save you time.
--   **Context Menu Integration**: Right-click on any page, link, or selected text to instantly save a job application.
--   **Centralized Dashboard**: View and manage all your saved jobs in a clean, accessible list within the extension popup.
--   **Data Export**: Download all your saved job data as a CSV file for use in spreadsheets or other tools.
--   **Powerful Webhook Integration**: Connect to external services like Google Sheets, Notion, or Airtable. Unleash advanced workflows by integrating with AI services like Gemini or Grok.
--   **Resume Tracking**: Keep a record of which resume version you used for each application.
--   **Cross-Device Sync**: Your job list is automatically synced across all browsers where you are logged into your Google account.
+- **One-Click Job Saving**: Quickly capture job title, company, and URL from the current page.  
+- **Smart Autofill**: Automatically scrapes job details to save you time.  
+- **Context Menu Integration**: Right-click to save a job instantly from any page or link.  
+- **Centralized Dashboard**: View, manage, and delete applications directly from the extension popup.  
+- **Resume Tracking**: Record which resume version was used for each application.  
+- **Data Export**: Download your jobs as CSV for spreadsheets or reporting.  
+- **Cross-Device Sync**: Data syncs across Chrome browsers where you’re logged in.  
+- **Webhook Integration**: Send saved jobs to Google Sheets, Notion, Airtable, or a custom backend.  
+- **AI Enrichment via Webhooks**: Use external services (e.g. Gemini, Grok) to summarize job posts, extract skills, and suggest resume keywords.  
 
-## Installation
 
-1.  Download the extension files to your local machine.
-2.  Open the Chrome browser and navigate to `chrome://extensions`.
-3.  Enable "Developer mode" using the toggle in the top right corner.
-4.  Click the "Load unpacked" button and select the extension's root folder.
-5.  The **Job Tracker Pro** icon will appear in your extensions bar.
+## Tech Stack
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow)
+![HTML](https://img.shields.io/badge/HTML5-orange)
+![CSS](https://img.shields.io/badge/CSS3-blue)
+![Chrome Extension](https://img.shields.io/badge/Chrome--Extension-lightgrey)
+
+
+## Getting Started
+
+### Installation
+1. Clone or download this repository.  
+```bash
+git clone https://github.com/nikkiakali/chrome-job-tracker.git
+cd chrome-job-tracker
+```
+2. Open Chrome and navigate to chrome://extensions/.
+3. Enable Developer Mode (toggle in the top right).
+4. Click Load unpacked and select the repo’s root folder.
+5. The Job Tracker Pro icon will appear in your extensions bar.
 
 ## How to Use
 
@@ -29,40 +49,47 @@ Job Tracker Pro is a powerful Chrome extension designed to streamline your job a
 3.  The form will be pre-filled with information scraped from the page.
 4.  Fill in any additional details (like status or notes) and click **Save**.
 
-Alternatively, you can right-click anywhere on the page (or on a link to a job posting) and select **"Save job to tracker"** from the context menu for even faster saving.
-
 ### Viewing and Managing Jobs
-1.  Click the extension icon to open the popup.
-2.  Click the **"View Saved"** button to see a list of all your applications.
-3.  From the list, you can open the original job posting URL or delete an entry.
+1. Click the extension icon → **View Saved**.  
+2. Open job URLs or delete entries directly from the list.  
 
 ## Configuration
-
-To configure the extension, right-click the extension icon and select "Options", or click the "Settings" link in the popup.
+Right-click the extension icon → Options (or click Settings in the popup).
 
 ### Resume Variants
-In the settings, you can list the different versions of your resume (e.g., "General", "Software Engineering Focused"). This list will populate the "Resume Used" dropdown in the save form, helping you track which resume you've sent for each application.
+- Add resume versions (e.g., General, SWE-Focused).
+- These appear in the Resume Used dropdown when saving jobs.
 
 ### Webhook URL
-This is where the magic happens for automation and integration. By providing a webhook URL, the extension will send the details of every saved job as a `POST` request to your endpoint. This allows you to:
--   Automatically add jobs to a Google Sheet.
--   Create new entries in a Notion or Airtable database.
--   Trigger custom workflows and connect to AI services.
+Provide a webhook URL to send job data as a POST request.
+Examples:
+-   Add rows to Google Sheets
+-   Create entries in Notion or Airtable
+-   Trigger workflows in Zapier/Make
+-   Connect to AI services
 
 ## AI Integration via Webhooks
 
-Leverage the power of AI to enrich your job application data. The webhook feature is your gateway to connecting Job Tracker Pro with powerful AI models like Google's Gemini or xAI's Grok.
-
-While you don't enter API keys directly into the extension, you can set up a simple backend service (like a Google Apps Script or a serverless function on Vercel/Netlify) to act as your webhook endpoint. This service can use your AI API keys to process and enhance the job data.
+Use webhooks to enrich saved job data with AI services like Google’s Gemini or xAI’s Grok.
+You don’t enter API keys directly into the extension. Instead, set up a backend (e.g. Google Apps Script, Vercel, Netlify) to receive the job data and call AI APIs.
 
 ### Example Workflow
 
-1.  **Extension Sends Data**: When you save a job, the extension sends the job details (title, company, URL, etc.) to your configured webhook URL.
-2.  **Your Service Receives Data**: Your backend service (e.g., a Google Apps Script) receives this data.
-3.  **AI Enrichment**: Your service then calls an AI API (like Gemini). For example, you could ask the AI to:
-    -   Summarize the job description from the URL.
-    -   Extract key skills and requirements from the job post.
-    -   Suggest keywords to include in your resume.
-4.  **Store Enriched Data**: Finally, your service stores the original job data along with the AI-generated insights into your preferred database, like a Google Sheet, Airtable, or Notion page.
+1. **Extension Sends Data** → Job details (title, company, URL, notes) sent to your webhook.  
+2. **Your Service Receives Data** → Backend (e.g. Apps Script) processes payload.  
+3. **AI Enrichment** → Call AI API to:  
+   - Summarize the job description  
+   - Extract skills/requirements  
+   - Suggest resume keywords  
+4. **Store Enriched Data** → Save enriched job data in Google Sheets, Airtable, or Notion.  
 
 This setup gives you complete control and flexibility to build powerful, AI-driven job tracking workflows.
+
+## What’s Next
+- Filtering & sorting by status, company, or date
+- Notifications for follow-ups
+- Chrome sync for better cross-device support
+- Dark mode + UI polish
+
+## About
+Built by [Natasha Akali](https://github.com/nikkiakali) — turning ideas into products that help people.
